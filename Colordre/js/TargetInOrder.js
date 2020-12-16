@@ -7,35 +7,56 @@ class TargetInOrder extends App {
     console.log("Target In Order");
     //
     this.targets = [
-      new Target(0, {
-        x: 3,
-        y: 5
-      }, this.grid, "Lavender", this.ctx),
-      new Target(1, {
-        x: 4,
-        y: 3
-      }, this.grid, "Darkgreen", this.ctx),
-      new Target(2, {
-        x: 6,
-        y: 7
-      }, this.grid, "DarkRed", this.ctx),
-      new Target(3, {
-        x: 16,
-        y: 3
-      }, this.grid, "DarkBlue", this.ctx),
+      new Target(
+        0,
+        {
+          x: 3,
+          y: 5,
+        },
+        this.grid,
+        "Lavender",
+        this.ctx
+      ),
+      new Target(
+        1,
+        {
+          x: 4,
+          y: 3,
+        },
+        this.grid,
+        "Darkgreen",
+        this.ctx
+      ),
+      new Target(
+        2,
+        {
+          x: 6,
+          y: 7,
+        },
+        this.grid,
+        "DarkRed",
+        this.ctx
+      ),
+      new Target(
+        3,
+        {
+          x: 16,
+          y: 3,
+        },
+        this.grid,
+        "DarkBlue",
+        this.ctx
+      ),
     ];
     this.shuffleArray(this.targets);
 
     //on cre un player pour la demo
-    this.players = [];
-    this.players.push(
-      new Player(0, {
-        x: 0,
-        y: 0
-      }, this.grid, this.ctx, "black"),
+    // this.players = [];
+    this.player = new Player(0, { x: 0, y: 0 }, this.grid, this.ctx, "black");
 
-    );
-    this.activePlayer = this.players[0];
+
+    this.opponent = new Player(0, { x: 3, y: 0 }, this.grid, this.ctx, "black");
+    // );
 
     // INDEX POUR LA DETECTION
     this.detectionIndex = 0;
@@ -46,20 +67,28 @@ class TargetInOrder extends App {
   onKeyDown(e) {
     super.onKeyDown(e);
     // on vérifie la position de tous les target pour pouvoir comparer leur id
-    this.targets.forEach((item, id) => {
+
+    for (let id = 0; id < this.targets.length; id++) {
+      let item = this.targets[id];
+
       if (
-        this.activePlayer.position.x == item.position.x &&
-        this.activePlayer.position.y == item.position.y
+        this.player.position.x == item.position.x &&
+        this.player.position.y == item.position.y
       ) {
         if (this.targets[this.detectionIndex].id == item.id) {
           console.log("BONNE TARGET. CONTINUE");
           item.detected = true;
+
+          this.player.changeColor(item.color);
+
           this.detectionIndex++;
+
+          break;
         } else {
           console.log("MAUVAISE TARGET. IL FAUT RECHARGER LA PAGE");
         }
       }
-    });
+    }
   }
 
   shuffleArray(array) {
@@ -75,12 +104,13 @@ class TargetInOrder extends App {
     this.targets.forEach((item, id) => {
       item.show();
     });
+
+    this.player.drawTrail();
     //on affiche la grille
     this.grid.show();
+    this.opponent.show();
     // on affiche tous les players
-    this.players.forEach((item, id) => {
-      item.show();
-    });
+    this.player.show();
 
     this.showOrder();
 

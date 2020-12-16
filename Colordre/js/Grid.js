@@ -5,6 +5,10 @@ class Grid {
     this.size = size;
     this.ctx = ctx;
 
+    this.resizeGrid();
+  }
+
+  resizeGrid() {
     this.offset = {
       x: window.innerWidth / 2 - (this.cols * this.size) / 2,
       y: window.innerHeight / 2 - (this.rows * this.size) / 2,
