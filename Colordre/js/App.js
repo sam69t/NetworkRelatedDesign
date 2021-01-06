@@ -2,6 +2,7 @@
 class App {
   constructor() {
     this.canvas = document.createElement("canvas");
+    this.canvas.style.display = "none";
     document.body.appendChild(this.canvas);
     //ctx
     this.ctx = this.canvas.getContext("2d");
@@ -19,6 +20,8 @@ class App {
 
   listener() {
     document.addEventListener("keydown", this.onKeyDown.bind(this));
+    document.addEventListener("click", this.onClick.bind(this));
+
 
     window.addEventListener("resize", () => {
       this.canvas.width = this.w = window.innerWidth;
@@ -27,6 +30,10 @@ class App {
     });
   }
 
+  onClick(e) {
+    this.canvas.style.display = "block";
+
+  }
   onKeyDown(e) {
     //les interactions du clavier pour naviguer dans la grille haut-bas-gauche-droite
     let moveX, moveY;
@@ -58,10 +65,10 @@ class App {
       case "s":
         moveY = 1;
         break;
-      case "w":
+      case "z":
         moveY = -1;
         break;
-      case "a":
+      case "q":
         moveX = -1;
         break;
       case "d":
@@ -74,7 +81,7 @@ class App {
 
   setup() {
     // on définit des dimensions de grille (ligne, colonne, dimension, context)
-    this.grid = new Grid(10, 24, 60, this.ctx);
+    this.grid = new Grid(10, 20, 75, this.ctx);
     //Ajouter 3 players, sur 3 cases différentes, de 3 couleurs différentes
     // this.player = new Player(0, { x: 0, y: 0 }, this.grid, this.ctx, "violet");
 

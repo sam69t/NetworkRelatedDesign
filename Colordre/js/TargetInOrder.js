@@ -8,18 +8,16 @@ class TargetInOrder extends App {
     //
     this.targets = [
       new Target(
-        0,
-        {
-          x: 3,
-          y: 5,
+        0, {
+          x: 1,
+          y: 8,
         },
         this.grid,
-        "Lavender",
+        "Orange",
         this.ctx
       ),
       new Target(
-        1,
-        {
+        1, {
           x: 4,
           y: 3,
         },
@@ -28,18 +26,16 @@ class TargetInOrder extends App {
         this.ctx
       ),
       new Target(
-        2,
-        {
-          x: 6,
-          y: 7,
+        2, {
+          x: 18,
+          y: 8,
         },
         this.grid,
         "DarkRed",
         this.ctx
       ),
       new Target(
-        3,
-        {
+        3, {
           x: 16,
           y: 3,
         },
@@ -52,10 +48,16 @@ class TargetInOrder extends App {
 
     //on cre un player pour la demo
     // this.players = [];
-    this.player = new Player(0, { x: 0, y: 0 }, this.grid, this.ctx, "black");
+    this.player = new Player(0, {
+      x: 11,
+      y: 5
+    }, this.grid, this.ctx, "black");
 
 
-    this.opponent = new Player(0, { x: 3, y: 0 }, this.grid, this.ctx, "black");
+    this.opponent = new Player(0, {
+      x: 8,
+      y: 5
+    }, this.grid, this.ctx, "black");
     // );
 
     // INDEX POUR LA DETECTION
@@ -85,7 +87,11 @@ class TargetInOrder extends App {
 
           break;
         } else {
+
           console.log("MAUVAISE TARGET. IL FAUT RECHARGER LA PAGE");
+
+          console.log("MAUVAISE TARGET. IL FAUT RECHARGER LA PAGE");
+
         }
       }
     }
@@ -119,9 +125,9 @@ class TargetInOrder extends App {
 
   showOrder() {
     this.targets.forEach((item, id) => {
-      this.ctx.fillStyle = item.detected ? "grey" : item.color;
-      const x = this.grid.offset.x + id * this.grid.size;
-      const y = this.grid.offset.y - this.grid.size - 20;
+      this.ctx.fillStyle = item.detected ? "transparent" : item.color;
+      const x = this.grid.offset.x + id * this.grid.size + 600;
+      const y = this.grid.offset.y - this.grid.size + 0;
       this.ctx.fillRect(x, y, this.grid.size, this.grid.size);
     });
   }

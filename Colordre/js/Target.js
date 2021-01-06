@@ -9,9 +9,12 @@ class Target {
   }
 
   show() {
+
+    const cornerRadius = 20;
     const x = this.grid.offset.x + this.position.x * this.grid.size;
     const y = this.grid.offset.y + this.position.y * this.grid.size;
     this.ctx.fillStyle = this.color;
     this.ctx.fillRect(x, y, this.grid.size, this.grid.size);
+
   }
 }

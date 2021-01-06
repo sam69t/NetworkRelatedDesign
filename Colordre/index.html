@@ -1,32 +1,62 @@
 <html>
-  <head>
-    <style>
-      html, body {
-        margin: 0;
-        height: 100%;
-        overflow: hidden;
-      }
 
-      canvas {
-        z-index: -1;
-        position: absolute;
-        top: 0;
-        left: 0;
-      }
+<head>
+  <link rel="stylesheet" href="css/style.css">
 
-    </style>
-        <link rel="shortcut icon" href="#">
-        <script src="js/Target.js"></script>
-        <script src="js/Player.js"></script>
-        <script src="js/Grid.js"></script>
-        <script src="js/App.js"></script>
-        <script src="js/TargetInOrder.js"></script>
-  </head>
-  <body>
+  <link rel="shortcut icon" href="#">
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.js"
+    integrity="sha256-DrT5NfxfbHvMHux31Lkhxg42LY6of8TaYyK50jnxRnM=" crossorigin="anonymous"></script>
+  <script src="js/Target.js"></script>
+  <script src="js/Player.js"></script>
+  <script src="js/Grid.js"></script>
+  <script src="js/App.js"></script>
+  <script src="js/Query.js"></script>
 
-    <h1>
-      TEST
-    </h1>
+  <script src="js/TargetInOrder.js"></script>
 
-  </body>
+</head>
+
+<body>
+
+  <div class="content">
+    <div class="header">
+
+      <span class="titre"> Co </span>
+      <span class="titre"> lo </span>
+      <span class="titre"> rd </span>
+      <span class="titre"> re </span>
+
+    </div>
+    <div class="left">
+    </div>
+    <div class="right">
+    </div>
+    <div class="footer">
+
+    </div>
+
+  </div>
+
+  <div id="SplashScreen">
+    <span class="instruction">Atteindre les couleurs dans le bon ordre. Le premier arrivé gagne.
+    </span>
+    <input id="StartButton" type="button" value="Commencer" />
+
+  </div>
+
+
+  <script>
+    var cnvs = document.getElementById("myCanvas");
+
+    $("#StartButton").click(function () {
+      console.log("test");
+
+      $("#SplashScreen").hide();
+
+      $("#myCanvas").css("display", "block");
+    });
+  </script>
+
+</body>
+
 </html>

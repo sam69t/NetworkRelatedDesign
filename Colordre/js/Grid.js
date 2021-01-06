@@ -11,7 +11,7 @@ class Grid {
   resizeGrid() {
     this.offset = {
       x: window.innerWidth / 2 - (this.cols * this.size) / 2,
-      y: window.innerHeight / 2 - (this.rows * this.size) / 2,
+      y: window.innerHeight / 2 + 50 - (this.rows * this.size) / 2 + 0,
     };
   }
 
@@ -25,7 +25,10 @@ class Grid {
           this.size,
           this.size
         );
-        this.ctx.stroke();
+
+
+        // this.ctx.stroke();
+
         this.ctx.closePath();
       }
     }
